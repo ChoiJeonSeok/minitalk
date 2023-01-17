@@ -6,29 +6,18 @@
 /*   By: jeonscho <jeonscho@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:55:37 by jeonscho          #+#    #+#             */
-/*   Updated: 2023/01/13 21:56:07 by jeonscho         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:23:26 by jeonscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/**
- * @brief Prints a message then exits the program.
- * 
- * @param usg The message to be printed.
- */
 static void	usage(char *usg)
 {
 	ft_printf("%s\n", usg);
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
-/**
- * @brief Sends a message trough bits to the PID received.
- * 
- * @param pid The int PID where the message must be sended.
- * @param msg The String message.
- */
 static void	send_message(int pid, char msg)
 {
 	int	bit;
@@ -54,6 +43,7 @@ int	main(int argc, char **argv)
 	if (pid == 0)
 		usage(ZER);
 	msg = argv[2];
+	ft_printf("\e[1;36mClient PID:\033[1;0m %d\n", getpid());
 	send_message(pid, 0);
 	while (*msg)
 		send_message(pid, *msg++);

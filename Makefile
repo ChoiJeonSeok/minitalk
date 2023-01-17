@@ -6,7 +6,7 @@
 #    By: jeonscho <jeonscho@student.42seoul.>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 18:47:59 by jeonscho          #+#    #+#              #
-#    Updated: 2023/01/13 22:18:09 by jeonscho         ###   ########.fr        #
+#    Updated: 2023/01/16 19:50:22 by jeonscho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,8 @@ fclean:	clean
 		@$(RM) $(LIBFT)
 		@echo "$(GREEN)clean up!$(EOC)"
 
-re:	fclean all
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
 
 .PHONY: all bonus clean fclean re

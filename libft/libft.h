@@ -6,7 +6,7 @@
 /*   By: jeonscho <jeonscho@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:30:02 by jeonscho          #+#    #+#             */
-/*   Updated: 2023/01/13 22:09:05 by jeonscho         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:04:41 by jeonscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,15 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 // ternary operator
+// condition true -> return a || false -> return b
 int		ft_ternary(int condition, int a, int b);
 
 // type bool
 typedef int	t_bool;
+
 # define TRUE 1
 # define FALSE 0
+
 t_bool	ft_isnum(char *str);
 
 //  BONUS

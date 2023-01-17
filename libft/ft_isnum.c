@@ -6,11 +6,11 @@
 /*   By: jeonscho <jeonscho@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:59:31 by jeonscho          #+#    #+#             */
-/*   Updated: 2023/01/13 22:08:34 by jeonscho         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:52:08 by jeonscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 t_bool	ft_isnum(char *str)
 {

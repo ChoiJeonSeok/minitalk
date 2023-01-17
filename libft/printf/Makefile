@@ -6,7 +6,7 @@
 #    By: jeonscho <jeonscho@student.42seoul.>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 17:03:56 by jeonscho          #+#    #+#              #
-#    Updated: 2023/01/13 19:36:24 by jeonscho         ###   ########.fr        #
+#    Updated: 2023/01/16 19:44:05 by jeonscho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ fclean:	clean
 	@$(RM) $(NAME)
 	@echo "$(RED)cleaning object files and libftprintf.a$(EOC)"
 
-re: fclean all
+re: 
+	@$(MAKE) fclean 
+	@$(MAKE) all
 
 .PHONY: all clean fclean re

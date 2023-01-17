@@ -6,7 +6,7 @@
 #    By: jeonscho <jeonscho@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 16:37:15 by jeonscho          #+#    #+#              #
-#    Updated: 2023/01/13 22:09:17 by jeonscho         ###   ########.fr        #
+#    Updated: 2023/01/16 19:49:10 by jeonscho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,8 @@ fclean:	clean
 		@$(RM) $(NAME)
 		@echo "$(RED)clean up the object files and libft.a!$(EOC)"
 
-re:	fclean all
+re:	
+	@$(MAKE) fclean
+	@$(MAKE) all
 
-.SILENT: %.o
 .PHONY: all bonus clean fclean re

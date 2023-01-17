@@ -6,49 +6,15 @@
 /*   By: jeonscho <jeonscho@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:55:31 by jeonscho          #+#    #+#             */
-/*   Updated: 2023/01/13 18:46:16 by jeonscho         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:51:53 by jeonscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/**
- * @brief Converts the message from bit to char.
- * 
- * @param str String to store the message.
- * @param c The char to convert.
- * @return char* The final message.
- */
-static char	*extended_string(char *str, char c)
-{
-	char	*result;
-	int		length;
-
-	length = 0;
-	result = NULL;
-	if (str)
-		length = ft_strlen(str);
-	result = (char *)malloc(sizeof(char) * (length + 2));
-	if (result)
-	{
-		result = ft_memcpy(result, str, length);
-		ft_bzero(result + length, 2);
-		*(result + length) = c;
-	}
-	if (str)
-		free(str);
-	return (result);
-}
-
-/**
- * @brief Handles the signal received.
- * 
- * @param signal The signal.
- */
 static void	handle_sigusr(int signal)
 {
 	static int				bit = 0;
-	static char				*string = NULL;
 	static unsigned char	c = 0;
 
 	bit++;
@@ -58,13 +24,7 @@ static void	handle_sigusr(int signal)
 	if (bit == 8)
 	{
 		if (c)
-			string = extended_string(string, c);
-		else if (string)
-		{
-			ft_printf("%s\n", string);
-			free(string);
-			string = NULL;
-		}
+			write(1, &c, 1);
 		c = 0;
 		bit = 0;
 	}
@@ -79,8 +39,9 @@ int	main(void)
 	sa.sa_flags = 0;
 	sa.sa_mask = mask;
 	sa.sa_handler = handle_sigusr;
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
+	if (sigaction(SIGUSR1, &sa, NULL) == -1
+		|| sigaction(SIGUSR2, &sa, NULL) == -1)
+		return (ft_printf("Error. sigaction failed."));
 	ft_printf("\e[1;36mPID:\033[1;0m %d\n", getpid());
 	while (TRUE)
 		pause();
